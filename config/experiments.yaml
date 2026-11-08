@@ -1,0 +1,37 @@
+# Run list from CLAUDE.md section 6, in order. Do not add entries without asking (section 9.7).
+flags:
+  off: &off {head: ldgn, n1_anchors: false, n2_signed: false, n4_hierarchical: false, n5_reg_gate: false, n6_intensity: false, n3_annotator: false}
+  s1: &s1 {head: ldgn, n1_anchors: true, n2_signed: true, n4_hierarchical: false, n5_reg_gate: false, n6_intensity: false, n3_annotator: false}
+  s2: &s2 {head: ldgn, n1_anchors: true, n2_signed: true, n4_hierarchical: true, n5_reg_gate: true, n6_intensity: false, n3_annotator: false}
+  final: &final {head: ldgn, n1_anchors: true, n2_signed: true, n4_hierarchical: true, n5_reg_gate: true, n6_intensity: true, n3_annotator: false}
+  linear: &linear {head: linear, n1_anchors: false, n2_signed: false, n4_hierarchical: false, n5_reg_gate: false, n6_intensity: false, n3_annotator: false}
+  n1_only: &n1_only {head: ldgn, n1_anchors: true, n2_signed: false, n4_hierarchical: false, n5_reg_gate: false, n6_intensity: false, n3_annotator: false}
+  n2_only: &n2_only {head: ldgn, n1_anchors: false, n2_signed: true, n4_hierarchical: false, n5_reg_gate: false, n6_intensity: false, n3_annotator: false}
+  n4_only: &n4_only {head: ldgn, n1_anchors: false, n2_signed: false, n4_hierarchical: true, n5_reg_gate: false, n6_intensity: false, n3_annotator: false}
+  n5_only: &n5_only {head: ldgn, n1_anchors: false, n2_signed: false, n4_hierarchical: false, n5_reg_gate: true, n6_intensity: false, n3_annotator: false}
+  n6_only: &n6_only {head: ldgn, n1_anchors: false, n2_signed: false, n4_hierarchical: false, n5_reg_gate: false, n6_intensity: true, n3_annotator: false}
+experiments:
+  - {id: b2_subset,        data: subset, epochs: subset, seed: 42, flags: *linear}
+  - {id: b4_subset_s42,    data: subset, epochs: subset, seed: 42, flags: *off}
+  - {id: s1_subset,        data: subset, epochs: subset, seed: 42, flags: *s1}
+  - {id: s2_subset,        data: subset, epochs: subset, seed: 42, flags: *s2}
+  - {id: final_subset_s42, data: subset, epochs: subset, seed: 42, flags: *final}
+  - {id: b4_subset_s1,     data: subset, epochs: subset, seed: 1,  flags: *off}
+  - {id: b4_subset_s2,     data: subset, epochs: subset, seed: 2,  flags: *off}
+  - {id: final_subset_s1,  data: subset, epochs: subset, seed: 1,  flags: *final}
+  - {id: final_subset_s2,  data: subset, epochs: subset, seed: 2,  flags: *final}
+  - {id: b4_full,          data: full,   epochs: full,   seed: 42, flags: *off}
+  - {id: final_full,       data: full,   epochs: full,   seed: 42, flags: *final}
+  # Added 2026-11-06 at the user's request: N6 without the 50% intensity batch quota.
+  - {id: final_full_noquota, data: full, epochs: full, seed: 42, flags: *final, intensity_quota: false}
+  # Added 2026-11-07 at the user's request, to separate the additions (see docs/DECISIONS.md).
+  - {id: nq_subset_s42, data: subset, epochs: subset, seed: 42, flags: *final, intensity_quota: false}
+  - {id: nq_subset_s1,  data: subset, epochs: subset, seed: 1,  flags: *final, intensity_quota: false}
+  - {id: nq_subset_s2,  data: subset, epochs: subset, seed: 2,  flags: *final, intensity_quota: false}
+  - {id: a_n1_subset,   data: subset, epochs: subset, seed: 42, flags: *n1_only}
+  - {id: a_n2_subset,   data: subset, epochs: subset, seed: 42, flags: *n2_only}
+  - {id: a_n4_subset,   data: subset, epochs: subset, seed: 42, flags: *n4_only}
+  - {id: a_n5_subset,   data: subset, epochs: subset, seed: 42, flags: *n5_only}
+  - {id: a_n6_subset,   data: subset, epochs: subset, seed: 42, flags: *n6_only, intensity_quota: false}
+  # Added 2026-11-07 at the user's request: the additions chosen by the ablation rule (docs/DECISIONS.md).
+  - {id: best_full, data: full, epochs: full, seed: 42, flags: *n6_only, intensity_quota: false}
