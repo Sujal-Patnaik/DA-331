@@ -1,0 +1,66 @@
+# Python and tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.claude/
+.vscode/
+.idea/
+.env
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Data, models and run outputs: downloaded, rebuilt or provided through the Drive bundle
+data/
+models/
+runs/
+drive_bundle/
+drive_downloads/
+artifacts/*.pt
+apps/bronze/
+apps/silver/
+apps/gold/
+
+# Text from the demo datasets (customer support has no stated licence)
+eval/app_annotation/*.csv
+/*_export.csv
+
+# Logs and partial files
+reports/logs/
+*.log
+nohup.out
+*.part
+
+# Archives and OS metadata
+*.zip
+*:Zone.Identifier
+*.Zone.Identifier
+.DS_Store
+Thumbs.db
+
+# Working folders that are not part of the code
+/modified_apps/
+/artifacts_check_best/
+/apps/_check_best/
+
+# Presentation and report material, submitted separately
+/submission/
+/brighter_slides_boadilla_main/
+/Emotion_Detection_presentation.pdf
+/acl2023.pdf
+/acl2023.sty
+/acl2023.tex
+/acl_natbib.bst
+/anthology.bib
+/custom.bib
+
+# Internal working notes
+/CLAUDE.md
+/PROGRESS.md
+/docs/PPT_RESULTS_PROMPT.md
+/UPLOAD_COMMANDS.sh
