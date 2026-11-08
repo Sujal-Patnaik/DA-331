@@ -26,6 +26,9 @@ Scores are local, computed with the official metrics, and were not submitted to 
 | Use it when | Reproducing the experiments from scratch | Looking at the apps, the notebook or the subset tables quickly |
 | Section | [Path A](#path-a-rerun-everything) | [Path B](#path-b-use-the-google-drive-bundle) |
 
+**Google Drive folder (Path B):** https://drive.google.com/drive/folders/1jHVRL1ArsCVlSBVcTxb3os3akTBW7FuJ?usp=sharing
+
+
 Both paths start with the same requirements.
 
 ## Requirements
@@ -183,6 +186,10 @@ The tests include one slow GPU test (`test_overfit.py`), which is expected to re
 
 The Drive folder holds ready-made results and model files, so training and most rebuilding can be skipped. A single script places every file where the code expects it. Nothing needs to be moved by hand.
 
+**Drive folder:** https://drive.google.com/drive/folders/1jHVRL1ArsCVlSBVcTxb3os3akTBW7FuJ?usp=sharing
+
+The folder contains data that is not public (see [Data, licences and reproducibility](#data-licences-and-reproducibility)), so access may need to be requested from the project owner.
+
 ### What is in the Drive folder
 
 All files are zip archives plus one manifest, in a single Drive folder. Paths inside each zip are relative to the repository root.
@@ -216,7 +223,7 @@ Which parts to download for a given goal:
 mkdir -p drive_downloads
 ```
 
-**2. Download the parts** from the Drive link into `drive_downloads/`, together with `manifest.json`. Downloading the whole folder from the browser is the simplest route. For large files, Drive may show a virus-scan page. In that case download from the browser, not from the command line.
+**2. Download the parts** from the [Drive folder](https://drive.google.com/drive/folders/1jHVRL1ArsCVlSBVcTxb3os3akTBW7FuJ?usp=sharing) into `drive_downloads/`, together with `manifest.json`. Downloading the whole folder from the browser is the simplest route. For large files, Drive may show a virus-scan page. In that case download from the browser, not from the command line.
 
 **3. Restore the files:**
 
@@ -270,7 +277,7 @@ python scripts/package_for_drive.py --dry-run       # sizes only, writes nothing
 python scripts/package_for_drive.py                 # writes drive_bundle/ (about 3.5 GB, a few minutes)
 ```
 
-Upload **everything in `drive_bundle/`** to one Google Drive folder, keep the file names unchanged, and share the folder only with the instructor and graders. The bundle contains customer support text with no stated licence, EduRABSA text (CC BY-NC-SA 4.0), prediction files that include the BRIGHTER test labels, and weights trained on BRIGHTER, so the link should not be public. The NRC lexicon is not included because its licence forbids redistribution.
+Upload **everything in `drive_bundle/`** to the Google Drive folder above, keep the file names unchanged, and share the folder only with the instructor and graders. The bundle contains customer support text with no stated licence, EduRABSA text (CC BY-NC-SA 4.0), prediction files that include the BRIGHTER test labels, and weights trained on BRIGHTER, so the link should not be public. The NRC lexicon is not included because its licence forbids redistribution.
 
 ---
 
