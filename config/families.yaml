@@ -1,0 +1,8 @@
+# Language -> family map (plan 5.5, 7.8). Languages missing here fall back to the global graph.
+afroasiatic: [amh, arq, ary, hau, orm, som, tir]
+nigercongo: [ibo, kin, swa, vmw, yor, xho, zul]
+indoeuropean: [afr, deu, eng, esp, hin, mar, ptbr, ptmz, ron, rus, swe, ukr]
+austronesian: [sun, jav, ind]
+sinotibetan: [chn]
+turkic: [tat]
+creole: [pcm]
