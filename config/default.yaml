@@ -1,0 +1,59 @@
+# Start values from CLAUDE.md 5.3. Do not search hyperparameters.
+seed: 42
+encoder: xlm-roberta-base
+max_len: 64                 # M3 may raise to 96 or 128 (rule in M3)
+fp16: true
+freeze_word_embeddings: auto   # true if VRAM < 8 GB, else false
+batch_size: 16
+grad_accum: 2               # effective batch 32
+lr_encoder: 2.0e-5
+lr_head: 1.0e-3
+weight_decay: 0.01
+warmup_ratio: 0.06
+lang_sampling_temperature: 0.7
+min_intensity_rows_per_batch: 32
+epochs:
+  full:   {max: 5, patience: 2, extend_to: 8}   # extend if best epoch == 5
+  subset: {max: 10, patience: 3}
+val_fraction: 0.15
+use_official_dev_in_val: true
+gcn_hidden: 512
+n2: {tau_pos: 0.05, tau_neg: 0.10, smoothing_k: 1.0}
+n4: {kappa: 2000}
+n5: {lambda_g: 0.1, mu: 0.01}
+n6: {lambda_i: 0.5, alpha: 0.5, beta: 0.5, gamma: 1.0}
+pos_weight_clip: 10
+thresholds: {grid_step: 0.01, min_pos_for_language: 30}
+subset_langs: [eng, hau, mar, ukr]   # confirm in M1 that all exist with enough rows; else pick 3 small ones from different families and log it
+eval_batch_size: 64
+apps:
+  outrage_anger_intensity: 1.85    # top 10% of anger intensity on English support clauses
+  threshold_overrides:             # applications only; provisional until the hand labels exist
+    eng: {fear: 0.95}
+  urgency_threshold: 0.6
+  spike_sigma: 3
+  spike_window: 4
+  n_periods: 12              # used only when the input has no timestamps
+  max_len: 128
+  sample_conversations: 50000
+  max_records_per_batch: 2048
+  score_batch_size: 32
+  top_triggers: 3
+  representative_per_cell: 5
+paths:
+  raw: data/raw/brighter
+  bronze: data/bronze
+  silver: data/silver
+  gold: data/gold
+  runs: runs
+  reports: reports
+  artifacts: artifacts
+  app_bronze: apps/bronze
+  app_silver: apps/silver
+  app_gold: apps/gold
+  demo: data/demo
+  lexicons: data/lexicons
+  lid_model: models/lid.176.bin
+  families: config/families.yaml
+  label_definitions: config/label_definitions.yaml
+  experiments: config/experiments.yaml
