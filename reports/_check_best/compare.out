@@ -1,0 +1,13 @@
+shared English clauses 14516
+old eng thresholds [0.5, 0.75, 0.75, 0.4300000071525574, 0.5600000023841858, 0.6600000262260437]
+new eng thresholds [0.46000000834465027, 0.699999988079071, 0.6899999976158142, 0.6700000166893005, 0.7099999785423279, 0.47999998927116394]
+('old', 'cut1.85') {'frustration': 0.134, 'outrage': 0.02, 'stress': 0.123, 'disappointment': 0.076, 'delight': 0.067}
+('old', 'own_top10') {'frustration': 0.134, 'outrage': 0.1, 'stress': 0.12, 'disappointment': 0.076, 'delight': 0.067}
+('old', 'emo') {'anger': 0.225, 'disgust': 0.0, 'fear': 0.184, 'joy': 0.227, 'sadness': 0.28, 'surprise': 0.39, 'none': 0.248}
+('old', 'misc') {'urgency>0.6': 0.057, 'anger_int_p90': 0.996, 'P(fear|anger|sad)': 0.332}
+('new', 'cut1.85') {'frustration': 0.131, 'outrage': 0.0, 'stress': 0.07, 'disappointment': 0.037, 'delight': 0.044}
+('new', 'own_top10') {'frustration': 0.131, 'outrage': 0.1, 'stress': 0.068, 'disappointment': 0.037, 'delight': 0.044}
+('new', 'emo') {'anger': 0.265, 'disgust': 0.0, 'fear': 0.13, 'joy': 0.193, 'sadness': 0.208, 'surprise': 0.404, 'none': 0.309}
+('new', 'misc') {'urgency>0.6': 0.011, 'anger_int_p90': 0.525, 'P(fear|anger|sad)': 0.271}
+valence Spearman old vs new 0.755
+same present set 0.471
