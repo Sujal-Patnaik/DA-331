@@ -1,0 +1,15 @@
+# EduRABSA aspect categories -> profiles/student_feedback.yaml aspects (CLAUDE.md M9).
+"Course - Assessment": exams
+"Course - Content": content
+"Course - Overall": content
+"Course - Course materials": content
+"Course - Workload": workload
+"Course - Difficulty": workload
+"Course - Learning activity": assignments
+"Staff - Teaching": teaching
+"Staff - Overall": teaching
+"Staff - Attitude": teaching
+"Staff - Helpfulness": teaching
+"Staff - Knowledge & skills": teaching
+"Staff - Personal traits": teaching
+# Everything else (Course - Technology & tools, University - *) maps to "other".
