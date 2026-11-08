@@ -1,0 +1,80 @@
+apps:
+  max_len: 128
+  max_records_per_batch: 2048
+  n_periods: 12
+  outrage_anger_intensity: 1.85
+  representative_per_cell: 5
+  sample_conversations: 50000
+  score_batch_size: 32
+  spike_sigma: 3
+  spike_window: 4
+  threshold_overrides:
+    eng:
+      fear: 0.95
+  top_triggers: 3
+  urgency_threshold: 0.6
+batch_size: 16
+encoder: xlm-roberta-base
+epochs:
+  full:
+    extend_to: 8
+    max: 5
+    patience: 2
+  subset:
+    max: 10
+    patience: 3
+eval_batch_size: 64
+fp16: true
+freeze_word_embeddings: auto
+gcn_hidden: 512
+grad_accum: 2
+lang_sampling_temperature: 0.7
+lr_encoder: 2.0e-05
+lr_head: 0.001
+max_len: 64
+min_intensity_rows_per_batch: 32
+n2:
+  smoothing_k: 1.0
+  tau_neg: 0.1
+  tau_pos: 0.05
+n4:
+  kappa: 2000
+n5:
+  lambda_g: 0.1
+  mu: 0.01
+n6:
+  alpha: 0.5
+  beta: 0.5
+  gamma: 1.0
+  lambda_i: 0.5
+paths:
+  app_bronze: apps/_check_best/bronze
+  app_gold: apps/_check_best/gold
+  app_silver: apps/_check_best/silver
+  artifacts: artifacts_check_best
+  bronze: data/bronze
+  demo: data/demo
+  experiments: config/experiments.yaml
+  families: config/families.yaml
+  gold: data/gold
+  label_definitions: config/label_definitions.yaml
+  lexicons: data/lexicons
+  lid_model: models/lid.176.bin
+  raw: data/raw/brighter
+  reports: reports
+  runs: runs
+  silver: data/silver
+pos_weight_clip: 10
+seed: 42
+subset_langs:
+- eng
+- hau
+- mar
+- ukr
+thresholds:
+  grid_step: 0.01
+  min_pos_for_language: 30
+use_official_dev_in_val: true
+val_fraction: 0.15
+warmup_ratio: 0.06
+weight_decay: 0.01
