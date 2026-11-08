@@ -1,0 +1,8 @@
+# N1 semantic anchors (plan 5.2): one short English definition per node, in node order.
+anger: "anger: feeling annoyed, furious or hostile about something unfair or offensive"
+disgust: "disgust: feeling revolted, repelled or sickened by something unpleasant or immoral"
+fear: "fear: feeling afraid, anxious or threatened by possible danger or harm"
+joy: "joy: feeling happy, delighted, pleased or cheerful"
+sadness: "sadness: feeling unhappy, sorrowful, disappointed or grieving over a loss"
+surprise: "surprise: feeling astonished or startled by something unexpected"
+neutral: "neutral: no particular emotion is expressed"
