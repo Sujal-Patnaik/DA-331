@@ -1,0 +1,340 @@
+{
+  "languages": {
+    "afr": 0,
+    "amh": 1,
+    "arq": 2,
+    "ary": 3,
+    "chn": 4,
+    "deu": 5,
+    "eng": 6,
+    "esp": 7,
+    "hau": 8,
+    "hin": 9,
+    "ibo": 10,
+    "kin": 11,
+    "mar": 12,
+    "orm": 13,
+    "pcm": 14,
+    "ptbr": 15,
+    "ptmz": 16,
+    "ron": 17,
+    "rus": 18,
+    "som": 19,
+    "sun": 20,
+    "swa": 21,
+    "swe": 22,
+    "tat": 23,
+    "tir": 24,
+    "ukr": 25,
+    "vmw": 26,
+    "yor": 27,
+    "ind": 28,
+    "jav": 29,
+    "xho": 30,
+    "zul": 31,
+    "<unk>": 32
+  },
+  "families": {
+    "afr": "indoeuropean",
+    "amh": "afroasiatic",
+    "arq": "afroasiatic",
+    "ary": "afroasiatic",
+    "chn": "sinotibetan",
+    "deu": "indoeuropean",
+    "eng": "indoeuropean",
+    "esp": "indoeuropean",
+    "hau": "afroasiatic",
+    "hin": "indoeuropean",
+    "ibo": "nigercongo",
+    "kin": "nigercongo",
+    "mar": "indoeuropean",
+    "orm": "afroasiatic",
+    "pcm": "creole",
+    "ptbr": "indoeuropean",
+    "ptmz": "indoeuropean",
+    "ron": "indoeuropean",
+    "rus": "indoeuropean",
+    "som": "afroasiatic",
+    "sun": "austronesian",
+    "swa": "nigercongo",
+    "swe": "indoeuropean",
+    "tat": "turkic",
+    "tir": "afroasiatic",
+    "ukr": "indoeuropean",
+    "vmw": "nigercongo",
+    "yor": "nigercongo",
+    "ind": "austronesian",
+    "jav": "austronesian",
+    "xho": "nigercongo",
+    "zul": "nigercongo"
+  },
+  "emotion_mask": {
+    "afr": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "amh": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "arq": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ary": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "chn": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "deu": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "eng": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "esp": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "hau": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "hin": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ibo": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "kin": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "mar": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "orm": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "pcm": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ptbr": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ptmz": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ron": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "rus": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "som": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "sun": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "swa": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "swe": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "tat": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "tir": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ukr": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "vmw": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "yor": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "ind": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "jav": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "xho": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "zul": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "<unk>": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "has_neutral": true,
+  "run": "final_full_noquota",
+  "smoke_only": false
+}
