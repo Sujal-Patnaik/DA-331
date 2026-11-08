@@ -1,0 +1,26 @@
+pyspark==3.5.*
+pyarrow>=14
+pandas>=2.0,<3
+numpy<2.1
+torch           # install the CUDA build first: pip install torch --index-url https://download.pytorch.org/whl/cu126
+transformers>=4.40,<5
+sentencepiece
+accelerate
+iterative-stratification
+scikit-learn
+scipy
+emoji>=2.10
+pyyaml
+datasets
+kaggle              # optional, for the Coursera reviews
+tqdm
+matplotlib
+seaborn
+streamlit
+fastapi
+uvicorn
+fasttext-wheel      # language ID for the apps; optional
+pytest
+setuptools          # Python 3.12 no longer bundles distutils, some deps still expect it
+jupyter
+plotly
