@@ -1,0 +1,12 @@
+ 1 want=anger        /frustration    | old=anger,sadness          frustration,outrage u=0.71 | new=anger                                   u=0.12
+ 2 want=joy          /delight        | old=joy                                     u=0.00 | new=joy                                     u=0.00
+ 3 want=fear         /stress         | old=fear                   stress           u=0.83 | new=fear,sadness           stress           u=0.48
+ 4 want=sadness      /disappointment | old=fear,sadness           disappointment   u=0.78 | new=fear,sadness           disappointment   u=0.53
+ 5 want=surprise+joy /               | old=joy,surprise           delight          u=0.09 | new=joy,surprise           delight          u=0.17
+ 6 want=none         /               | old=fear                   stress           u=0.34 | new=surprise                                u=0.22
+ 7 want=joy+fear     /               | old=fear,surprise          stress           u=0.92 | new=fear,sadness           stress           u=0.45
+ 8 want=anger        /outrage        | old=anger,fear,sadness,surprise frustration,outrage u=0.72 | new=anger,surprise                          u=0.19
+ 9 want=sadness      /               | old=sadness                disappointment   u=0.80 | new=sadness                disappointment   u=0.29
+10 want=fear         /stress         | old=fear,sadness           stress           u=0.55 | new=fear,sadness           stress           u=0.58
+11 want=none         /               | old=none                                    u=0.00 | new=none                                    u=0.00
+12 want=joy+surprise /               | old=joy,surprise           delight          u=0.00 | new=joy,surprise           delight          u=0.12
