@@ -1,0 +1,11 @@
+# profiles/student_feedback.yaml (plan 9.2)
+aspects:
+  teaching:    [explain, lecture, professor, prof, instructor, teacher, teaches, teaching, taught, "office hours", pace, पढ़ाना, शिकवणे]
+  content:     [course, class, topic, syllabus, material, content, textbook, book, notes, interesting]
+  exams:       [exam, examination, midterm, quiz, quizzes, test, marks, grade, grading, "extra credit", paper, परीक्षा]
+  assignments: [assignment, project, homework, deadline, lab, essay, report, tutorial]
+  workload:    [workload, too much, pressure, time, burden, easy, hard, difficult, tough, heavy, "a lot of work"]
+states: [stress, frustration, disappointment, delight, mixed]
+cues:
+  confusion:   [confusing, confused, unclear, "didn't understand", समझ नहीं]   # keyword cue, not a model label
+min_group_size: 10          # never show results for fewer than 10 comments
