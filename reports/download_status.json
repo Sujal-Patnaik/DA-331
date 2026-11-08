@@ -1,0 +1,11 @@
+{
+  "semeval": "ok",
+  "hf_categories": "ok",
+  "hf_intensities": "ok",
+  "customer_support": "ok",
+  "edurabsa": "ok",
+  "edurabsa_hf": "ok",
+  "coursera": "FAILED",
+  "nrc_vad": "ok",
+  "lid176": "ok"
+}
