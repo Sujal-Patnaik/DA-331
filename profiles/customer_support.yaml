@@ -1,0 +1,13 @@
+# profiles/customer_support.yaml (plan 9.2)
+aspects:
+  delivery:   [delivery, delayed, late, courier, shipment, shipping, package, parcel, tracking, "my order", "order number", डिलीवरी]
+  refund:     [refund, "money back", "my money", charged, overcharged, charge, bill, billed, billing, payment, deducted, रिफंड]
+  product:    [broken, damaged, defective, quality, size, "not working", "doesn't work", "don't work", "my phone", iphone, "my device", "my laptop", "the item"]
+  app_site:   [app, website, site, login, "logged in", "log in", "sign in", account, password, crash, error, otp, update, ios, internet, wifi, server]
+  staff:      [agent, rude, "no response", "no reply", support, "customer care", "customer service", representative, rep, manager, driver, "on hold"]
+states: [frustration, outrage, stress, disappointment, delight]
+escalate_if:
+  - urgency >= 0.6
+  - state == outrage
+  - state == stress and aspect in [refund, app_site]
+min_group_size: 1
