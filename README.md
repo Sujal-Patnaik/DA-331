@@ -34,15 +34,23 @@ Both paths start with the same requirements.
 ## Requirements
 
 - Python 3.10 or newer (3.12 was used), Java 8, 11 or 17 (11 was used), and about 10 GB of free disk space for Path A (about 5 GB for Path B).
-- A CUDA GPU with at least 4 GB of memory for training (an RTX 3050 laptop GPU was used). Windows users should work in WSL2.
+- A CUDA GPU with at least 4 GB of memory for training (an RTX 3050 laptop GPU was used). **Windows users must run all commands inside WSL2** (`wsl` from a terminal to open it). Native Windows (PowerShell / CMD) is not supported.
 - An internet connection for the downloads, and for the XLM-RoBERTa model (about 1.1 GB), which Hugging Face fetches the first time it is needed.
 
+**Inside WSL2 (or any Linux shell):**
+
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install torch --index-url https://download.pytorch.org/whl/cu126
+# If on a fresh Ubuntu/Debian WSL installation, ensure venv is available:
+# sudo apt update && sudo apt install -y python3-venv python3-pip
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install torch --index-url https://download.pytorch.org/whl/cu126   # CUDA build for training
 pip install -r requirements.txt
 python scripts/check_env.py            # ends with ALL CHECKS PASSED
 ```
+
+> The CUDA torch line is only needed for **training** (Path A). If you only want to run the apps (Path B), skip it — `pip install -r requirements.txt` installs the CPU build of torch automatically, which is enough for the dashboards.
 
 If the XLM-RoBERTa download stalls, set `HF_HUB_DISABLE_XET=1` and run it again.
 
@@ -215,6 +223,52 @@ Which parts to download for a given goal:
 | Rebuild the app tables yourself | 2 and 5 |
 | Everything | 1 to 5 (about 3.5 GB) |
 
+### Run only the apps without any training
+
+If you only want to see how the apps work (without training any model or running Spark jobs), use the steps below. Java is not needed. A GPU is not needed for the pre-scored dashboard (Tab 1); it is only needed if you want to score your own CSV in the upload tab (Tab 2) faster.
+
+**Which parts to download for the apps only:**
+
+| Goal | Parts to download |
+|---|---|
+| View the pre-scored dashboards (Tab 1) | `manifest.json` and `part1_app_tables.zip` (~80 MB total) |
+| Also use the upload tab to score your own CSV (Tab 2) | `manifest.json`, `part1_app_tables.zip`, and `part2_app_model.zip` (~1.2 GB total) |
+
+**Steps (Linux / WSL2):**
+
+```bash
+# 1. Navigate to the repository inside WSL2
+cd path/to/DA-331   # e.g., cd /mnt/c/Users/<User>/Desktop/checkit/DA-331
+
+# 2. Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3. Install all dependencies
+#    This installs CPU torch automatically. No CUDA install line is needed.
+#    No Java is needed. The apps never start a Spark session.
+pip install -r requirements.txt
+
+# 4. Create the downloads folder and place the Drive files
+mkdir -p drive_downloads
+#    Download manifest.json and the parts you need from the Drive folder
+#    using your Windows browser into drive_downloads/.
+#    (If downloaded to your Windows Downloads folder, move them:
+#     cp /mnt/c/Users/<YourWindowsUsername>/Downloads/part*.zip drive_downloads/
+#     cp /mnt/c/Users/<YourWindowsUsername>/Downloads/manifest.json drive_downloads/)
+
+# 5. Restore the files
+python scripts/restore_from_drive.py --source drive_downloads
+
+# 6. Run the apps (open each in a separate WSL terminal with the venv active)
+streamlit run apps/dashboards/support.py    # open http://localhost:8501 in your Windows browser
+streamlit run apps/dashboards/feedback.py   # open http://localhost:8502 in your Windows browser
+```
+
+> **WSL2 tip for Streamlit:** Streamlit in WSL2 cannot automatically launch a desktop browser window. Simply open your Windows browser (Chrome, Edge, Firefox) and navigate to `http://localhost:8501` (or the network URL displayed in the terminal).
+>
+> **Important — install before you start Streamlit:** Always run `pip install -r requirements.txt` to completion **before** launching Streamlit for the first time. If Streamlit starts without `torch` installed, Python caches the failed import and a later `pip install torch` will not fix it in the same running process. The symptom is the error `torch can only be initialized once per process`. The fix is to stop Streamlit (`Ctrl+C`), install the missing package, and start Streamlit again with a fresh process.
+
 ### Steps
 
 **1. Clone the repository and prepare the environment** as in [Requirements](#requirements). Create a folder inside the repository for the downloads:
@@ -305,11 +359,13 @@ python eval/app_eval.py --latency-url http://127.0.0.1:8000/analyze --scaling 1 
 | Symptom | Likely cause and remedy |
 |---|---|
 | A Spark job prints `exists, skipping` | Its output exists. Use `--force` to rebuild it. |
-| `JAVA_HOME` or Spark startup errors | Java 8, 11 or 17 is required and must be on the path. |
+| `JAVA_HOME` or Spark startup errors | Java 8, 11 or 17 is required and must be on the path. Install with `sudo apt install openjdk-11-jdk` in WSL2. |
 | CUDA out of memory | Close other GPU programs. Training halves the batch size and restarts on its own. |
 | Training stopped part-way | Run the same command with `--resume`. |
 | The XLM-RoBERTa download stalls | `HF_HUB_DISABLE_XET=1`, then run it again. |
 | The dashboards fail with `No module named 'plotly'` | `pip install -r requirements.txt`. |
+| `torch` can only be initialized once per process | Streamlit started before `torch` was installed. Stop Streamlit (`Ctrl+C`), run `pip install torch`, then start Streamlit again. |
+| Streamlit does not launch a browser window | Normal in WSL2 (no native desktop GUI). Open `http://localhost:8501` manually in your Windows browser. If inaccessible, check `hostname -I` in WSL and open `http://<wsl-ip>:8501`. |
 | The upload tab says the model is not available | `artifacts/best.pt` is missing: restore part 2, or run step 8. |
 | Notebook tables look empty in VS Code | The tables are Markdown. Reload the notebook, and make sure the notebook is trusted. |
 | `restore_from_drive.py` reports a checksum mismatch | The download is incomplete or corrupted. Download that part again. |
